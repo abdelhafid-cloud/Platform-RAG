@@ -13,7 +13,6 @@ import {
   Clock,
   MessageSquare,
   TrendingUp,
-  Activity,
   ExternalLink,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';

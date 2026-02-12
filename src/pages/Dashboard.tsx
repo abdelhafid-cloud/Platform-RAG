@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import {
   Users,
-  TrendingUp,
   MessageSquare,
   Building2,
   ArrowUpRight,
   ArrowDownRight,
   Bot,
   CheckCircle2,
-  Clock,
   XCircle,
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -86,7 +84,6 @@ export default function Dashboard() {
   const conversationsResolues = conversations.filter(c => c.status === 'resolved').length;
   const totalFiliales = filiales.length;
   const filialesActives = filiales.filter(f => f.status === 'active').length;
-  const totalEmployes = filiales.reduce((sum, f) => sum + (f.employees || 0), 0);
 
   // Calculer les pourcentages
   const tauxUtilisateursActifs = totalUtilisateurs > 0 
