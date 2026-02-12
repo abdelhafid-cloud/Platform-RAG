@@ -1,0 +1,43 @@
+{
+    "filialles": [
+        {
+            "id": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+            "name": "DigitGrow",
+            "description": "DigitGrow-1 est une filiale de la société DigitGrow",
+            "createdAt": "2021-01-01",
+            "updatedAt": "2021-01-01",
+            "adresse": "123 Rue de la Paix, Paris, France",
+            "telephone": "01 23 45 67 89",
+            "email": "contact@digitgrow.com",
+            "logo": "/data/filialle/images/651.jpg",
+            "status": "active",
+            "employees": 45
+        },
+        {
+            "id": "ad0d01be-2872-4611-bfc9-53a71ccd1e6e",
+            "name": "DigitGrow-2",
+            "description": "DigitGrow-2 est une filiale de la société DigitGrow",
+            "createdAt": "2021-01-01",
+            "updatedAt": "2021-01-01",
+            "adresse": "123 Rue de la Paix, Paris, France",
+            "telephone": "01 23 45 67 89",
+            "email": "contact-2@digitgrow.com",
+            "logo": "/data/filialle/images/2289113.jpg",
+            "status": "active",
+            "employees": 32
+        },
+        {
+            "id": "620584a2-0719-452d-8460-70339316c850",
+            "name": "DigitGrow-3",
+            "description": "DigitGrow-3 est une filiale de la société DigitGrow",
+            "createdAt": "2021-01-01",
+            "updatedAt": "2021-01-01",
+            "adresse": "123 Rue de la Paix, Paris, France",
+            "telephone": "01 23 45 67 89",
+            "email": "contact-3@digitgrow.com",
+            "logo": "/data/filialle/images/christmas_2012_new_6417.jpg",
+            "status": "inactive",
+            "employees": 28
+        }
+    ]
+}

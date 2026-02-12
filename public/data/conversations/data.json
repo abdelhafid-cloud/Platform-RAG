@@ -1,0 +1,215 @@
+{
+  "conversations": [
+    {
+      "id": "conv-tech-1",
+      "assistantId": "asst-3",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "title": "Problème de connexion réseau",
+      "lastMessage": "Le problème est maintenant résolu",
+      "createdAt": "2026-02-10T09:30:00",
+      "updatedAt": "2026-02-12T10:15:00",
+      "status": "resolved",
+      "messages": [
+        {
+          "id": "msg-1",
+          "role": "user",
+          "content": "Problème de connexion réseau",
+          "timestamp": "2026-02-10T09:30:00"
+        },
+        {
+          "id": "msg-2",
+          "role": "assistant",
+          "content": "Bonjour ! Je suis Assistant Technique. Je vais vous aider à résoudre ce problème de connexion. Pouvez-vous me donner plus de détails sur l'erreur que vous rencontrez ?",
+          "timestamp": "2026-02-10T09:30:15"
+        },
+        {
+          "id": "msg-3",
+          "role": "user",
+          "content": "Je n'arrive pas à me connecter au serveur principal depuis ce matin. J'ai un message d'erreur 'Connection timeout'",
+          "timestamp": "2026-02-10T09:32:00"
+        },
+        {
+          "id": "msg-4",
+          "role": "assistant",
+          "content": "Je comprends. Une erreur 'Connection timeout' peut avoir plusieurs causes. Vérifiez d'abord : 1) Votre connexion internet est active, 2) Le pare-feu ne bloque pas l'accès, 3) Les paramètres proxy sont corrects. Pouvez-vous tester ces points ?",
+          "timestamp": "2026-02-10T09:32:30"
+        },
+        {
+          "id": "msg-5",
+          "role": "user",
+          "content": "J'ai vérifié, tout semble correct. Le problème persiste.",
+          "timestamp": "2026-02-10T09:45:00"
+        },
+        {
+          "id": "msg-6",
+          "role": "assistant",
+          "content": "Dans ce cas, je vais redémarrer le service réseau de votre côté. Veuillez patienter 2-3 minutes puis réessayer la connexion.",
+          "timestamp": "2026-02-10T09:45:20"
+        },
+        {
+          "id": "msg-7",
+          "role": "user",
+          "content": "Ça fonctionne maintenant ! Merci beaucoup",
+          "timestamp": "2026-02-12T10:15:00"
+        },
+        {
+          "id": "msg-8",
+          "role": "assistant",
+          "content": "Excellent ! Le problème est maintenant résolu. N'hésitez pas à me contacter si vous rencontrez d'autres difficultés techniques.",
+          "timestamp": "2026-02-12T10:15:15"
+        }
+      ]
+    },
+    {
+      "id": "conv-tech-2",
+      "assistantId": "asst-3",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "title": "Installation du nouveau logiciel",
+      "lastMessage": "L'installation est terminée avec succès",
+      "createdAt": "2026-02-11T14:20:00",
+      "updatedAt": "2026-02-11T15:30:00",
+      "status": "resolved",
+      "messages": [
+        {
+          "id": "msg-9",
+          "role": "user",
+          "content": "Installation du nouveau logiciel",
+          "timestamp": "2026-02-11T14:20:00"
+        },
+        {
+          "id": "msg-10",
+          "role": "assistant",
+          "content": "Bonjour ! Je vais vous guider pour l'installation du nouveau logiciel. De quel logiciel s'agit-il ?",
+          "timestamp": "2026-02-11T14:20:15"
+        },
+        {
+          "id": "msg-11",
+          "role": "user",
+          "content": "Je dois installer le logiciel CRM version 3.5 sur mon poste",
+          "timestamp": "2026-02-11T14:22:00"
+        },
+        {
+          "id": "msg-12",
+          "role": "assistant",
+          "content": "Parfait. Pour installer le CRM 3.5, suivez ces étapes : 1) Téléchargez le fichier depuis l'intranet, 2) Désinstallez l'ancienne version si présente, 3) Lancez l'installateur en mode administrateur. Avez-vous des droits administrateur sur votre machine ?",
+          "timestamp": "2026-02-11T14:22:30"
+        },
+        {
+          "id": "msg-13",
+          "role": "user",
+          "content": "Oui j'ai les droits admin. J'ai téléchargé le fichier et désinstallé l'ancienne version.",
+          "timestamp": "2026-02-11T14:35:00"
+        },
+        {
+          "id": "msg-14",
+          "role": "assistant",
+          "content": "Excellent. Maintenant, faites un clic droit sur l'installateur et choisissez 'Exécuter en tant qu'administrateur'. Suivez l'assistant d'installation et utilisez la clé de licence que je vais vous envoyer par email sécurisé.",
+          "timestamp": "2026-02-11T14:35:20"
+        },
+        {
+          "id": "msg-15",
+          "role": "user",
+          "content": "L'installation est terminée avec succès ! Le logiciel se lance correctement.",
+          "timestamp": "2026-02-11T15:30:00"
+        },
+        {
+          "id": "msg-16",
+          "role": "assistant",
+          "content": "Parfait ! L'installation du CRM 3.5 est complète. N'oubliez pas de configurer vos préférences utilisateur dans les paramètres.",
+          "timestamp": "2026-02-11T15:30:15"
+        }
+      ]
+    },
+    {
+      "id": "conv-tech-3",
+      "assistantId": "asst-3",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "title": "Sauvegarde des données",
+      "lastMessage": "La sauvegarde a été configurée automatiquement",
+      "createdAt": "2026-02-09T11:00:00",
+      "updatedAt": "2026-02-09T11:45:00",
+      "status": "resolved",
+      "messages": [
+        {
+          "id": "msg-17",
+          "role": "user",
+          "content": "Sauvegarde des données",
+          "timestamp": "2026-02-09T11:00:00"
+        },
+        {
+          "id": "msg-18",
+          "role": "assistant",
+          "content": "Bonjour ! Je vais vous aider à configurer la sauvegarde de vos données. Souhaitez-vous une sauvegarde automatique ou manuelle ?",
+          "timestamp": "2026-02-09T11:00:15"
+        },
+        {
+          "id": "msg-19",
+          "role": "user",
+          "content": "Je préfère une sauvegarde automatique quotidienne. Comment puis-je la configurer ?",
+          "timestamp": "2026-02-09T11:02:00"
+        },
+        {
+          "id": "msg-20",
+          "role": "assistant",
+          "content": "Très bon choix. Je vais configurer une sauvegarde automatique quotidienne à 2h du matin. Vos données seront sauvegardées sur le serveur cloud sécurisé. La première sauvegarde complète prendra environ 30 minutes, puis ce seront des sauvegardes incrémentales.",
+          "timestamp": "2026-02-09T11:02:30"
+        },
+        {
+          "id": "msg-21",
+          "role": "user",
+          "content": "Parfait ! Et si je dois restaurer des données, comment faire ?",
+          "timestamp": "2026-02-09T11:15:00"
+        },
+        {
+          "id": "msg-22",
+          "role": "assistant",
+          "content": "Pour restaurer, allez dans Paramètres > Sauvegarde > Restaurer. Vous pourrez choisir la date de sauvegarde à restaurer. Je vous recommande de faire un test de restauration dans un mois pour vérifier que tout fonctionne bien.",
+          "timestamp": "2026-02-09T11:15:20"
+        },
+        {
+          "id": "msg-23",
+          "role": "user",
+          "content": "Merci ! La sauvegarde a été configurée automatiquement",
+          "timestamp": "2026-02-09T11:45:00"
+        }
+      ]
+    },
+    {
+      "id": "conv-tech-4",
+      "assistantId": "asst-3",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "title": "Mise à jour système en attente",
+      "lastMessage": "Je vais vérifier les mises à jour disponibles",
+      "createdAt": "2026-02-12T08:30:00",
+      "updatedAt": "2026-02-12T08:35:00",
+      "status": "in-progress",
+      "messages": [
+        {
+          "id": "msg-24",
+          "role": "user",
+          "content": "Mise à jour système en attente",
+          "timestamp": "2026-02-12T08:30:00"
+        },
+        {
+          "id": "msg-25",
+          "role": "assistant",
+          "content": "Bonjour ! Je vois qu'il y a des mises à jour système en attente sur votre poste. Souhaitez-vous que je lance l'installation maintenant ?",
+          "timestamp": "2026-02-12T08:30:15"
+        },
+        {
+          "id": "msg-26",
+          "role": "user",
+          "content": "Oui, mais combien de temps cela va-t-il prendre ? J'ai une réunion dans 2 heures.",
+          "timestamp": "2026-02-12T08:32:00"
+        },
+        {
+          "id": "msg-27",
+          "role": "assistant",
+          "content": "Je vais vérifier les mises à jour disponibles. Les mises à jour de sécurité critiques prendront environ 15-20 minutes avec un redémarrage. Les mises à jour optionnelles peuvent être reportées après votre réunion si vous préférez.",
+          "timestamp": "2026-02-12T08:35:00"
+        }
+      ]
+    }
+  ]
+}
+
