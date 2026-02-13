@@ -1,0 +1,109 @@
+{
+  "documents": [
+    {
+      "id": "doc-001",
+      "name": "Cahier technique - Procédures de sécurité",
+      "type": "Cahier technique",
+      "description": "Manuel complet des procédures de sécurité à respecter dans l'entreprise",
+      "uploadDate": "2024-01-15",
+      "size": "2.5 MB",
+      "format": "PDF",
+      "category": "Sécurité",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-1", "asst-3"],
+      "content": "Les procédures de sécurité sont essentielles pour garantir la protection des employés et des biens. Tous les employés doivent porter un équipement de protection individuelle (EPI) dans les zones à risque. En cas d'incident, alertez immédiatement le responsable sécurité au numéro d'urgence. Les exercices d'évacuation sont organisés trimestriellement."
+    },
+    {
+      "id": "doc-002",
+      "name": "Cahier technique - Maintenance des équipements",
+      "type": "Cahier technique",
+      "description": "Guide de maintenance préventive et corrective des équipements industriels",
+      "uploadDate": "2024-02-10",
+      "size": "3.2 MB",
+      "format": "PDF",
+      "category": "Technique",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-3"],
+      "content": "La maintenance préventive doit être effectuée selon le planning établi. Les équipements critiques nécessitent une inspection mensuelle. En cas de panne, consultez d'abord le manuel de dépannage avant d'appeler le service technique. Les pièces de rechange sont disponibles dans le stock central."
+    },
+    {
+      "id": "doc-003",
+      "name": "Fiche métier - Responsable achats",
+      "type": "Fiche métier",
+      "description": "Description détaillée du poste de responsable des achats",
+      "uploadDate": "2024-01-20",
+      "size": "850 KB",
+      "format": "PDF",
+      "category": "RH",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-4"],
+      "content": "Le responsable des achats est chargé de gérer les approvisionnements de l'entreprise. Il négocie les contrats avec les fournisseurs, suit les budgets d'achat et assure la qualité des produits commandés. Le poste nécessite une expérience minimale de 5 ans dans la gestion d'achats et une formation en commerce ou gestion."
+    },
+    {
+      "id": "doc-004",
+      "name": "Manuel utilisateur - Système de gestion",
+      "type": "Manuel",
+      "description": "Guide d'utilisation du système de gestion interne",
+      "uploadDate": "2024-03-05",
+      "size": "5.1 MB",
+      "format": "PDF",
+      "category": "Informatique",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-1", "asst-3"],
+      "content": "Pour vous connecter au système, utilisez vos identifiants d'entreprise. Le tableau de bord principal affiche vos indicateurs clés. Pour créer un nouveau dossier, cliquez sur le bouton 'Nouveau' dans le menu principal. Les rapports peuvent être exportés en PDF ou Excel depuis le menu 'Rapports'."
+    },
+    {
+      "id": "doc-005",
+      "name": "Cahier technique - Normes qualité ISO 9001",
+      "type": "Cahier technique",
+      "description": "Documentation complète sur les normes qualité ISO 9001",
+      "uploadDate": "2024-02-28",
+      "size": "4.8 MB",
+      "format": "PDF",
+      "category": "Qualité",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-9"],
+      "content": "La certification ISO 9001 garantit la qualité de nos processus. Tous les documents doivent être versionnés et approuvés avant publication. Les audits qualité sont réalisés semestriellement. Les non-conformités doivent être documentées et corrigées dans un délai de 30 jours."
+    },
+    {
+      "id": "doc-006",
+      "name": "Procédure - Gestion des congés",
+      "type": "Procédure",
+      "description": "Procédure complète pour la demande et validation des congés",
+      "uploadDate": "2024-01-12",
+      "size": "1.2 MB",
+      "format": "PDF",
+      "category": "RH",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-4"],
+      "content": "Les demandes de congés doivent être soumises au minimum 15 jours à l'avance via le portail RH. L'approbation se fait par le manager direct. Les périodes de forte activité peuvent restreindre les congés. Chaque employé dispose de 25 jours de congés payés par an."
+    },
+    {
+      "id": "doc-007",
+      "name": "Cahier technique - Installation réseau",
+      "type": "Cahier technique",
+      "description": "Guide technique pour l'installation et la configuration des réseaux",
+      "uploadDate": "2024-03-15",
+      "size": "6.5 MB",
+      "format": "PDF",
+      "category": "Technique",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-3"],
+      "content": "L'installation réseau nécessite une planification préalable. Vérifiez la compatibilité des équipements avant installation. Les câbles doivent respecter les normes Cat6 minimum. Configurez les routeurs selon les spécifications du document de configuration réseau. Testez la connectivité avant mise en production."
+    },
+    {
+      "id": "doc-008",
+      "name": "Règlement intérieur",
+      "type": "Règlement",
+      "description": "Règlement intérieur de l'entreprise",
+      "uploadDate": "2024-01-05",
+      "size": "2.1 MB",
+      "format": "PDF",
+      "category": "RH",
+      "filialeId": "724ecdac-e2fc-4bea-8d04-6becec5f5fc2",
+      "assistantIds": ["asst-4"],
+      "content": "Les horaires de travail sont de 9h à 18h avec une pause déjeuner d'une heure. Le port de la tenue de travail est obligatoire dans les zones de production. L'utilisation du téléphone personnel est interdite pendant les heures de travail. Les retards répétés peuvent entraîner des sanctions disciplinaires."
+    }
+  ]
+}
+

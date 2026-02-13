@@ -1,0 +1,50 @@
+{
+  "responses": [
+    {
+      "keywords": ["sécurité", "procédure sécurité", "EPI", "équipement protection", "incident sécurité"],
+      "response": "Selon le cahier technique des procédures de sécurité, tous les employés doivent porter un équipement de protection individuelle (EPI) dans les zones à risque. En cas d'incident, vous devez alerter immédiatement le responsable sécurité au numéro d'urgence. Les exercices d'évacuation sont organisés trimestriellement pour garantir la sécurité de tous.",
+      "resources": ["doc-001"]
+    },
+    {
+      "keywords": ["maintenance", "équipement", "panne", "dépannage", "pièce rechange"],
+      "response": "D'après le cahier technique de maintenance, la maintenance préventive doit être effectuée selon le planning établi. Les équipements critiques nécessitent une inspection mensuelle. En cas de panne, consultez d'abord le manuel de dépannage avant d'appeler le service technique. Les pièces de rechange sont disponibles dans le stock central.",
+      "resources": ["doc-002"]
+    },
+    {
+      "keywords": ["achat", "fournisseur", "commande", "approvisionnement", "responsable achats"],
+      "response": "Le responsable des achats est chargé de gérer les approvisionnements de l'entreprise. Il négocie les contrats avec les fournisseurs, suit les budgets d'achat et assure la qualité des produits commandés. Le poste nécessite une expérience minimale de 5 ans dans la gestion d'achats et une formation en commerce ou gestion.",
+      "resources": ["doc-003"]
+    },
+    {
+      "keywords": ["système", "connexion", "tableau de bord", "rapport", "export", "gestion"],
+      "response": "Pour vous connecter au système de gestion, utilisez vos identifiants d'entreprise. Le tableau de bord principal affiche vos indicateurs clés. Pour créer un nouveau dossier, cliquez sur le bouton 'Nouveau' dans le menu principal. Les rapports peuvent être exportés en PDF ou Excel depuis le menu 'Rapports'.",
+      "resources": ["doc-004"]
+    },
+    {
+      "keywords": ["qualité", "ISO", "audit", "non-conformité", "certification"],
+      "response": "La certification ISO 9001 garantit la qualité de nos processus. Tous les documents doivent être versionnés et approuvés avant publication. Les audits qualité sont réalisés semestriellement. Les non-conformités doivent être documentées et corrigées dans un délai de 30 jours selon le cahier technique des normes qualité.",
+      "resources": ["doc-005"]
+    },
+    {
+      "keywords": ["congé", "vacances", "demande congé", "jours de congé"],
+      "response": "Les demandes de congés doivent être soumises au minimum 15 jours à l'avance via le portail RH. L'approbation se fait par le manager direct. Les périodes de forte activité peuvent restreindre les congés. Chaque employé dispose de 25 jours de congés payés par an selon la procédure de gestion des congés.",
+      "resources": ["doc-006"]
+    },
+    {
+      "keywords": ["réseau", "installation réseau", "configuration", "routeur", "connectivité"],
+      "response": "L'installation réseau nécessite une planification préalable selon le cahier technique. Vérifiez la compatibilité des équipements avant installation. Les câbles doivent respecter les normes Cat6 minimum. Configurez les routeurs selon les spécifications du document de configuration réseau. Testez la connectivité avant mise en production.",
+      "resources": ["doc-007"]
+    },
+    {
+      "keywords": ["règlement", "horaires", "tenue", "téléphone", "retard"],
+      "response": "Selon le règlement intérieur, les horaires de travail sont de 9h à 18h avec une pause déjeuner d'une heure. Le port de la tenue de travail est obligatoire dans les zones de production. L'utilisation du téléphone personnel est interdite pendant les heures de travail. Les retards répétés peuvent entraîner des sanctions disciplinaires.",
+      "resources": ["doc-008"]
+    },
+    {
+      "keywords": ["cahier technique", "document", "manuel"],
+      "response": "Nous disposons de plusieurs cahiers techniques disponibles : procédures de sécurité, maintenance des équipements, normes qualité ISO 9001, et installation réseau. Ces documents contiennent toutes les informations techniques nécessaires pour votre travail. Souhaitez-vous des informations spécifiques sur l'un d'entre eux ?",
+      "resources": ["doc-001", "doc-002", "doc-005", "doc-007"]
+    }
+  ]
+}
+

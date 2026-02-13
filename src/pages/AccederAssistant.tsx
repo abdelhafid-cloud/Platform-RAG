@@ -1,16 +1,29 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Mic, Paperclip, Smile, StopCircle, Copy, ThumbsUp, ThumbsDown, RotateCcw } from 'lucide-react';
+import { Send, Mic, Paperclip, Smile, StopCircle, Copy, ThumbsUp, ThumbsDown, RotateCcw, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useFiliale } from '@/contexts/FilialeContext';
 import ChatSidebar, { Conversation } from '@/components/chat/ChatSidebar';
 import ChatNavbar from '@/components/chat/ChatNavbar';
 
+interface Document {
+  id: string;
+  name: string;
+  type: string;
+  description: string;
+  uploadDate: string;
+  size: string;
+  format: string;
+  category: string;
+  filialeId: string;
+}
+
 interface Message {
   id: string;
   role: 'user' | 'assistant';
   content: string;
   timestamp: Date;
+  resources?: string[]; // IDs des documents utilisés
 }
 
 interface ConversationData {
@@ -68,6 +81,10 @@ export default function AccederAssistant() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [savedConversations, setSavedConversations] = useState<SavedConversation[]>([]);
   
+  // Gérer les documents et réponses mock
+  const [documents, setDocuments] = useState<Document[]>([]);
+  const [mockResponses, setMockResponses] = useState<any[]>([]);
+  
   // Messages actuels basés sur la conversation sélectionnée
   const getWelcomeMessage = () => {
     if (!selectedFiliale) {
@@ -110,15 +127,19 @@ export default function AccederAssistant() {
     scrollToBottom();
   }, [messages]);
 
-  // Charger les assistants et conversations depuis le JSON
+  // Charger les assistants, conversations, documents et réponses mock depuis le JSON
   useEffect(() => {
     Promise.all([
       fetch('/data/assistants/data.json').then(res => res.json()),
       fetch('/data/conversations/data.json').then(res => res.json()),
+      fetch('/data/documents/data.json').then(res => res.json()),
+      fetch('/data/responses/mock-responses.json').then(res => res.json()),
     ])
-      .then(([assistantsData, conversationsData]) => {
+      .then(([assistantsData, conversationsData, documentsData, responsesData]) => {
         setAllAssistants(assistantsData.assistants);
         setSavedConversations(conversationsData.conversations);
+        setDocuments(documentsData.documents || []);
+        setMockResponses(responsesData.responses || []);
       })
       .catch((error) => {
         console.error('Error loading data:', error);
@@ -171,6 +192,7 @@ export default function AccederAssistant() {
           role: msg.role,
           content: msg.content,
           timestamp: new Date(msg.timestamp),
+          resources: (msg as any).resources || [],
         })),
       }));
       
@@ -301,12 +323,15 @@ export default function AccederAssistant() {
 
     // Simulate assistant typing
     setTimeout(() => {
-      const assistantName = selectedAssistant ? selectedAssistant.name : "l'assistant";
+      // Trouver la réponse appropriée avec les ressources
+      const { response, resources } = findResponse(userMessageContent);
+      
       const assistantResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Je comprends votre demande concernant "${userMessageContent}". En tant que ${assistantName}, je suis en train de traiter l'information et je vous reviendrai avec une réponse détaillée basée sur les données de ${selectedFiliale.name}.`,
+        content: response,
         timestamp: new Date(),
+        resources: resources,
       };
       
       const finalMessages = [...updatedMessages, assistantResponse];
@@ -339,6 +364,36 @@ export default function AccederAssistant() {
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  };
+
+  // Fonction pour trouver la réponse appropriée basée sur la question
+  const findResponse = (question: string): { response: string; resources: string[] } => {
+    const questionLower = question.toLowerCase();
+    
+    // Chercher la réponse qui correspond le mieux
+    for (const mockResponse of mockResponses) {
+      const matchingKeywords = mockResponse.keywords.filter((keyword: string) =>
+        questionLower.includes(keyword.toLowerCase())
+      );
+      
+      if (matchingKeywords.length > 0) {
+        return {
+          response: mockResponse.response,
+          resources: mockResponse.resources || [],
+        };
+      }
+    }
+    
+    // Réponse par défaut si aucune correspondance
+    return {
+      response: `Je comprends votre question concernant "${question}". Je recherche les informations pertinentes dans notre base documentaire pour vous fournir une réponse précise.`,
+      resources: [],
+    };
+  };
+
+  // Fonction pour obtenir les informations d'un document par son ID
+  const getDocumentById = (docId: string): Document | undefined => {
+    return documents.find(doc => doc.id === docId);
   };
 
   return (
@@ -409,6 +464,38 @@ export default function AccederAssistant() {
                       }`}
                     >
                       <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                      
+                      {/* Afficher les ressources si disponibles */}
+                      {msg.role === 'assistant' && msg.resources && msg.resources.length > 0 && (
+                        <div className="mt-4 pt-4 border-t border-gray-200">
+                          <div className="flex items-center gap-2 mb-2">
+                            <FileText className="h-4 w-4 text-gray-500" />
+                            <span className="text-xs font-semibold text-gray-700">Ressources utilisées :</span>
+                          </div>
+                          <div className="space-y-2">
+                            {msg.resources.map((docId) => {
+                              const doc = getDocumentById(docId);
+                              if (!doc) return null;
+                              return (
+                                <div
+                                  key={docId}
+                                  className="flex items-start gap-2 p-2 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors"
+                                >
+                                  <FileText className="h-4 w-4 text-gray-600 mt-0.5 shrink-0" />
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-xs font-medium text-gray-900 truncate">
+                                      {doc.name}
+                                    </p>
+                                    <p className="text-xs text-gray-500 mt-0.5">
+                                      {doc.type} • {doc.category}
+                                    </p>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Action Buttons (only for assistant messages) */}
