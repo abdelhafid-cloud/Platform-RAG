@@ -20,7 +20,8 @@ export default function Layout() {
           sidebarCollapsed={sidebarCollapsed}
           onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
         />
-        <main className="flex-1 overflow-y-auto bg-background">
+        {/* Ajouter un padding-top pour ne pas que le contenu passe sous la navbar fixe */}
+        <main className="flex-1 overflow-y-auto bg-background pt-16">
           <div className="container mx-auto p-6">
             <Outlet />
           </div>
