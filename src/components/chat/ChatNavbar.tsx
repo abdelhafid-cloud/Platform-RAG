@@ -31,10 +31,12 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showAssistantMenu, setShowAssistantMenu] = useState(false);
+  const [showFilialeMenu, setShowFilialeMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const assistantMenuRef = useRef<HTMLDivElement>(null);
-  const { logout } = useAuth();
-  const { selectedFiliale } = useFiliale();
+  const filialeMenuRef = useRef<HTMLDivElement>(null);
+  const { logout, userType, currentUser } = useAuth();
+  const { selectedFiliale, setSelectedFiliale, filiales } = useFiliale();
   const navigate = useNavigate();
 
   const toggleTheme = () => {
@@ -49,6 +51,9 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
       if (assistantMenuRef.current && !assistantMenuRef.current.contains(event.target as Node)) {
         setShowAssistantMenu(false);
       }
+      if (filialeMenuRef.current && !filialeMenuRef.current.contains(event.target as Node)) {
+        setShowFilialeMenu(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -62,7 +67,7 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
 
   return (
     <header className="h-14 border-b bg-white flex items-center justify-between px-6">
-      {/* Left side - Title & Assistant Selector */}
+      {/* Left side - Title & Selectors */}
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900">
@@ -76,7 +81,85 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
           </div>
         </div>
 
-        {/* Assistant Selector */}
+        {/* Filiale Selector - Only for admin */}
+        {userType === 'admin' && (
+          <div className="relative" ref={filialeMenuRef}>
+            <button
+              onClick={() => setShowFilialeMenu(!showFilialeMenu)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-blue-600">
+                <span className="text-xs font-bold text-white">F</span>
+              </div>
+              <div className="text-left">
+                <p className="text-xs font-medium text-gray-900">
+                  {selectedFiliale ? selectedFiliale.name : 'Sélectionner une filiale'}
+                </p>
+                {selectedFiliale && (
+                  <p className="text-[10px] text-gray-500">{selectedFiliale.status === 'active' ? 'Active' : 'Inactive'}</p>
+                )}
+              </div>
+              <ChevronDown className="h-3 w-3 text-gray-500" />
+            </button>
+
+            {showFilialeMenu && (
+              <div className="absolute top-full mt-2 left-0 w-72 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
+                <div className="px-3 pb-2 border-b">
+                  <p className="text-xs font-semibold text-gray-500 uppercase">
+                    Filiales disponibles ({filiales.length})
+                  </p>
+                </div>
+                {filiales.map((filiale) => (
+                  <button
+                    key={filiale.id}
+                    onClick={() => {
+                      setSelectedFiliale(filiale);
+                      setShowFilialeMenu(false);
+                    }}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 transition-colors ${
+                      selectedFiliale?.id === filiale.id ? 'bg-blue-50' : ''
+                    }`}
+                  >
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${
+                      selectedFiliale?.id === filiale.id
+                        ? 'bg-gradient-to-br from-blue-500 to-blue-600'
+                        : 'bg-gray-100'
+                    }`}>
+                      <span className={`text-xs font-bold ${
+                        selectedFiliale?.id === filiale.id ? 'text-white' : 'text-gray-600'
+                      }`}>
+                        {filiale.name.substring(0, 2).toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="flex-1 text-left min-w-0">
+                      <div className="flex items-center gap-2">
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {filiale.name}
+                        </p>
+                        {selectedFiliale?.id === filiale.id && (
+                          <Sparkles className="h-3 w-3 text-blue-600 shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 truncate">{filiale.description}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <Badge className={`text-[10px] px-1.5 py-0 ${
+                          filiale.status === 'active'
+                            ? 'bg-green-100 text-green-700 hover:bg-green-100'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-100'
+                        }`}>
+                          {filiale.status === 'active' ? '● Actif' : '● Inactif'}
+                        </Badge>
+                        <span className="text-[10px] text-gray-500">{filiale.employees} employés</span>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Assistant Selector - Only show if filiale is selected */}
         {selectedFiliale && availableAssistants.length > 0 && (
           <div className="relative" ref={assistantMenuRef}>
             <button
@@ -156,7 +239,8 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
 
       {/* Right side - User info */}
       <div className="flex items-center gap-2">
-        {selectedFiliale && (
+        {/* Show filiale badge for users (read-only) */}
+        {userType === 'user' && selectedFiliale && (
           <Badge className="bg-green-100 text-green-700 hover:bg-green-100 px-3 py-1">
             {selectedFiliale.name}
           </Badge>
@@ -183,11 +267,15 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
             className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-900">
-              <span className="text-xs font-bold text-white">AD</span>
+              <span className="text-xs font-bold text-white">
+                {currentUser ? `${currentUser.prenom[0]}${currentUser.nom[0]}`.toUpperCase() : 'AD'}
+              </span>
             </div>
             <div className="text-left">
-              <p className="text-sm font-medium text-gray-900">Admin User</p>
-              <p className="text-xs text-gray-500">admin@digitgrow.com</p>
+              <p className="text-sm font-medium text-gray-900">
+                {currentUser ? `${currentUser.prenom} ${currentUser.nom}` : 'Admin User'}
+              </p>
+              <p className="text-xs text-gray-500">{currentUser?.email || 'admin@digitgrow.com'}</p>
             </div>
             <ChevronDown className="h-4 w-4 text-gray-500" />
           </button>
@@ -195,8 +283,15 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
           {showUserMenu && (
             <div className="absolute top-full mt-2 right-0 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
               <div className="px-4 py-2 border-b">
-                <p className="text-sm font-semibold text-gray-900">Admin User</p>
-                <p className="text-xs text-gray-500">admin@digitgrow.com</p>
+                <p className="text-sm font-semibold text-gray-900">
+                  {currentUser ? `${currentUser.prenom} ${currentUser.nom}` : 'Admin User'}
+                </p>
+                <p className="text-xs text-gray-500">{currentUser?.email || 'admin@digitgrow.com'}</p>
+                {currentUser && (
+                  <Badge className="mt-1 text-[10px] px-1.5 py-0 bg-blue-100 text-blue-700">
+                    {currentUser.role}
+                  </Badge>
+                )}
               </div>
               <button
                 onClick={() => {
