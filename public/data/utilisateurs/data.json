@@ -10,7 +10,8 @@
       "role": "Admin",
       "status": "active",
       "dateCreation": "2021-01-15",
-      "derniereConnexion": "2026-02-12T09:30:00"
+      "derniereConnexion": "2026-02-12T09:30:00",
+      "assistantIds": ["asst-1"]
     },
     {
       "id": "user-2",
@@ -22,7 +23,8 @@
       "role": "Utilisateur",
       "status": "active",
       "dateCreation": "2021-02-10",
-      "derniereConnexion": "2026-02-11T16:45:00"
+      "derniereConnexion": "2026-02-11T16:45:00",
+      "assistantIds": ["asst-1"]
     },
     {
       "id": "user-3",
@@ -58,7 +60,8 @@
       "role": "Utilisateur",
       "status": "active",
       "dateCreation": "2021-04-12",
-      "derniereConnexion": "2026-02-10T14:30:00"
+      "derniereConnexion": "2026-02-10T14:30:00",
+      "assistantIds": ["asst-5", "asst-6"]
     },
     {
       "id": "user-6",
@@ -82,7 +85,8 @@
       "role": "Utilisateur",
       "status": "active",
       "dateCreation": "2021-05-08",
-      "derniereConnexion": "2026-02-11T17:20:00"
+      "derniereConnexion": "2026-02-11T17:20:00",
+      "assistantIds": ["asst-7"]
     },
     {
       "id": "user-8",
@@ -118,7 +122,8 @@
       "role": "Utilisateur",
       "status": "active",
       "dateCreation": "2021-07-20",
-      "derniereConnexion": "2026-02-11T13:00:00"
+      "derniereConnexion": "2026-02-11T13:00:00",
+      "assistantIds": ["asst-6"]
     }
   ]
 }

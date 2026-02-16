@@ -1,8 +1,18 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 
-export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading } = useAuth();
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  allowedRoles?: ('admin' | 'user')[];
+  redirectTo?: string;
+}
+
+export default function ProtectedRoute({
+  children,
+  allowedRoles,
+  redirectTo,
+}: ProtectedRouteProps) {
+  const { isAuthenticated, isLoading, userType } = useAuth();
 
   if (isLoading) {
     return (
@@ -17,6 +27,13 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
+  }
+
+  // Vérifier le rôle si nécessaire
+  if (allowedRoles && userType && !allowedRoles.includes(userType)) {
+    const fallback =
+      redirectTo || (userType === 'user' ? '/acceder-assistant' : '/');
+    return <Navigate to={fallback} replace />;
   }
 
   return <>{children}</>;

@@ -17,7 +17,7 @@ import Tickets from './pages/Tickets';
 import Parametres from './pages/Parametres';
 
 function LoginRedirect() {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, userType } = useAuth();
   
   if (isLoading) {
     return (
@@ -30,7 +30,16 @@ function LoginRedirect() {
     );
   }
   
-  return isAuthenticated ? <Navigate to="/" replace /> : <Login />;
+  if (!isAuthenticated) {
+    return <Login />;
+  }
+
+  // Rediriger selon le type d'utilisateur
+  if (userType === 'user') {
+    return <Navigate to="/acceder-assistant" replace />;
+  }
+
+  return <Navigate to="/" replace />;
 }
 
 function AppRoutes() {
@@ -42,16 +51,16 @@ function AppRoutes() {
       <Route
         path="/acceder-assistant"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute allowedRoles={['admin', 'user']}>
             <AccederAssistant />
           </ProtectedRoute>
         }
       />
       
-      {/* Routes principales avec Layout */}
+      {/* Routes principales avec Layout - réservées à l'admin */}
       <Route
         element={
-          <ProtectedRoute>
+          <ProtectedRoute allowedRoles={['admin']}>
             <Layout />
           </ProtectedRoute>
         }

@@ -3,6 +3,7 @@ import { Send, Mic, Paperclip, Smile, StopCircle, Copy, ThumbsUp, ThumbsDown, Ro
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useFiliale } from '@/contexts/FilialeContext';
+import { useAuth } from '@/contexts/AuthContext';
 import ChatSidebar, { Conversation } from '@/components/chat/ChatSidebar';
 import ChatNavbar from '@/components/chat/ChatNavbar';
 
@@ -65,6 +66,7 @@ interface Assistant {
 
 export default function AccederAssistant() {
   const { selectedFiliale } = useFiliale();
+  const { currentUser, userType } = useAuth();
   const [message, setMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -146,12 +148,20 @@ export default function AccederAssistant() {
       });
   }, []);
 
-  // Filtrer les assistants par filiale et sélectionner le premier par défaut
+  // Filtrer les assistants par filiale (et droits utilisateur) et sélectionner le premier par défaut
   useEffect(() => {
     if (selectedFiliale && allAssistants.length > 0) {
-      const filtered = allAssistants.filter(
+      let filtered = allAssistants.filter(
         (assistant) => assistant.filialeId === selectedFiliale.id && assistant.status === 'active'
       );
+
+      // Si utilisateur simple: ne garder que les assistants auxquels il a accès
+      if (userType === 'user' && currentUser?.assistantIds?.length) {
+        filtered = filtered.filter((assistant) =>
+          currentUser.assistantIds?.includes(assistant.id)
+        );
+      }
+
       setAvailableAssistants(filtered);
       
       // Sélectionner le premier assistant actif par défaut
@@ -166,7 +176,7 @@ export default function AccederAssistant() {
       setAvailableAssistants([]);
       setSelectedAssistant(null);
     }
-  }, [selectedFiliale, allAssistants]);
+  }, [selectedFiliale, allAssistants, userType, currentUser, selectedAssistant]);
 
   // Charger les conversations sauvegardées pour l'assistant sélectionné
   useEffect(() => {

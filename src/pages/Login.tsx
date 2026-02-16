@@ -3,7 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Lock, User, AlertCircle } from 'lucide-react';
 
 export default function Login() {
@@ -18,9 +24,12 @@ export default function Login() {
     setError('');
 
     if (login(username, password)) {
+      // La redirection finale est gérée par LoginRedirect dans App.tsx
       navigate('/');
     } else {
-      setError('Identifiants incorrects. Utilisez admin/admin');
+      setError(
+        "Identifiants incorrects. Utilisez admin/admin ou email utilisateur / 000000"
+      );
     }
   };
 
@@ -35,7 +44,7 @@ export default function Login() {
           </div>
           <CardTitle className="text-2xl font-bold">Bienvenue</CardTitle>
           <CardDescription>
-            Connectez-vous à votre espace DigitGrow Admin
+            Connectez-vous en tant qu'administrateur ou utilisateur
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -46,16 +55,16 @@ export default function Login() {
                 <p className="text-sm text-red-600">{error}</p>
               </div>
             )}
-            
+
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">
-                Nom d'utilisateur
+                Nom d'utilisateur ou email
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
                   type="text"
-                  placeholder="admin"
+                  placeholder="admin ou jean.dupont@digitgrow.com"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className="pl-9"
@@ -66,13 +75,13 @@ export default function Login() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">
-                Mot de passe
+                Mot de passe / code
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
                   type="password"
-                  placeholder="admin"
+                  placeholder="admin ou 000000"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-9"
@@ -85,9 +94,15 @@ export default function Login() {
               Se connecter
             </Button>
 
-            <div className="text-center">
+            <div className="text-center space-y-1 mt-2">
               <p className="text-xs text-gray-500">
-                Identifiants par défaut : <span className="font-semibold">admin</span> / <span className="font-semibold">admin</span>
+                Administrateur : <span className="font-semibold">admin</span> /{' '}
+                <span className="font-semibold">admin</span>
+              </p>
+              <p className="text-xs text-gray-500">
+                Utilisateur :{' '}
+                <span className="font-semibold">jean.dupont@digitgrow.com</span>{' '}
+                / <span className="font-semibold">000000</span>
               </p>
             </div>
           </form>

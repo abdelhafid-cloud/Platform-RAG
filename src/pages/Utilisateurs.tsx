@@ -32,6 +32,7 @@ interface Utilisateur {
   status: string;
   dateCreation: string;
   derniereConnexion: string | null;
+  assistantIds?: string[];
 }
 
 export default function Utilisateurs() {
