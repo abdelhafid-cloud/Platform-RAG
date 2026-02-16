@@ -67,20 +67,18 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
 
   return (
     <header className="h-14 border-b bg-white flex items-center justify-between px-6">
-      {/* Left side - Title & Selectors */}
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900">
-            <span className="text-xs font-bold text-white">DG</span>
-          </div>
-          <div>
-            <h1 className="text-sm font-semibold text-gray-900">Assistant DigitGrow</h1>
-            {selectedFiliale && (
-              <p className="text-xs text-gray-500">{selectedFiliale.name}</p>
-            )}
-          </div>
+      {/* Left side - Logo & Title */}
+      <div className="flex items-center gap-3">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900">
+          <span className="text-xs font-bold text-white">DG</span>
         </div>
+        <div>
+          <h1 className="text-sm font-semibold text-gray-900">Assistant DigitGrow</h1>
+        </div>
+      </div>
 
+      {/* Center - Selectors */}
+      <div className="flex items-center gap-3 absolute left-1/2 -translate-x-1/2">
         {/* Filiale Selector - Only for admin */}
         {userType === 'admin' && (
           <div className="relative" ref={filialeMenuRef}>
@@ -103,7 +101,7 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
             </button>
 
             {showFilialeMenu && (
-              <div className="absolute top-full mt-2 left-0 w-72 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
+              <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-72 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
                 <div className="px-3 pb-2 border-b">
                   <p className="text-xs font-semibold text-gray-500 uppercase">
                     Filiales disponibles ({filiales.length})
@@ -181,7 +179,7 @@ export default function ChatNavbar({ selectedAssistant, onSelectAssistant, avail
             </button>
 
             {showAssistantMenu && (
-              <div className="absolute top-full mt-2 left-0 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
+              <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-96 overflow-y-auto">
                 <div className="px-3 pb-2 border-b">
                   <p className="text-xs font-semibold text-gray-500 uppercase">
                     Assistants disponibles ({availableAssistants.length})
