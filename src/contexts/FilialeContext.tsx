@@ -36,7 +36,25 @@ export function FilialeProvider({ children }: { children: ReactNode }) {
         setFiliales(data.filialles);
         setLoading(false);
         
-        // Check if there's a saved selected filiale in localStorage
+        // Si un utilisateur est connecté (pas admin), sélectionner automatiquement sa filiale
+        const storedAuth = localStorage.getItem('authUser');
+        if (storedAuth) {
+          try {
+            const authUser = JSON.parse(storedAuth);
+            if (authUser.type === 'user' && authUser.filialeId) {
+              const userFiliale = data.filialles.find((f: Filiale) => f.id === authUser.filialeId);
+              if (userFiliale) {
+                setSelectedFiliale(userFiliale);
+                localStorage.setItem('selectedFilialeId', userFiliale.id);
+                return; // Ne pas continuer avec la logique de sauvegarde normale
+              }
+            }
+          } catch {
+            // Ignorer les erreurs de parsing
+          }
+        }
+        
+        // Check if there's a saved selected filiale in localStorage (pour les admins)
         const savedFilialeId = localStorage.getItem('selectedFilialeId');
         if (savedFilialeId) {
           const savedFiliale = data.filialles.find((f: Filiale) => f.id === savedFilialeId);
